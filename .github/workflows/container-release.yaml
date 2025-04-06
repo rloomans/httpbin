@@ -56,8 +56,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: |
-            simonkowallik/httpbin:${{ matrix.containers.tag }}
-            ghcr.io/simonkowallik/httpbin:${{ matrix.containers.tag }}
+            rloomans/httpbin:${{ matrix.containers.tag }}
+            ghcr.io/rloomans/httpbin:${{ matrix.containers.tag }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3

@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM python:3.13-alpine
 
 LABEL name="httpbin"
 LABEL version="0.9.2"
@@ -8,13 +8,13 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 RUN apk update --no-cache \
-&&  apk add --no-cache python3 py3-pip
+&&  apk upgrade --no-cache
 
 WORKDIR /httpbin
-ADD . /httpbin
+COPY . /httpbin
 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir /httpbin
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt \
+RUN pip install --no-cache-dir --break-system-packages /httpbin
 
 EXPOSE 80
 

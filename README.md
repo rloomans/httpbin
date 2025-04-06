@@ -1,19 +1,19 @@
 # httpbin(1): HTTP Request & Response Service
 
-[![httpbin Tests](https://github.com/simonkowallik/httpbin/actions/workflows/httpbin-ci.yaml/badge.svg)](https://github.com/simonkowallik/httpbin/actions/workflows/httpbin-ci.yaml)
-[![Container Build](https://github.com/simonkowallik/httpbin/actions/workflows/container-build.yaml/badge.svg)](https://github.com/simonkowallik/httpbin/actions/workflows/container-build.yaml)
+[![httpbin Tests](https://github.com/rloomans/httpbin/actions/workflows/httpbin-ci.yaml/badge.svg)](https://github.com/rloomans/httpbin/actions/workflows/httpbin-ci.yaml)
+[![Container Build](https://github.com/rloomans/httpbin/actions/workflows/container-build.yaml/badge.svg)](https://github.com/rloomans/httpbin/actions/workflows/container-build.yaml)
 
 This httpbin fork is updated and tailored to my personal needs.
 As [postmanlabs / httpbin](https://github.com/postmanlabs/httpbin) is stale and did not see an update in several years I felt the need to maintain my own version.
 
 ## Supported docker tags
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/simonkowallik/httpbin/latest?label=latest)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/simonkowallik/httpbin/alpine?label=alpine)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/simonkowallik/httpbin/nginx?label=nginx)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/simonkowallik/httpbin/httpd?label=httpd)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/simonkowallik/httpbin/httpd-alpine?label=httpd-alpine)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/simonkowallik/httpbin/unit?label=unit)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/latest?label=latest)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/alpine?label=alpine)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/nginx?label=nginx)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/httpd?label=httpd)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/httpd-alpine?label=httpd-alpine)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/unit?label=unit)
 
 - **`:latest`** / **`:alpine`** : Plain httpbin with gunicorn on Debian / Alpine Linux.
 
@@ -70,15 +70,15 @@ As [postmanlabs / httpbin](https://github.com/postmanlabs/httpbin) is stale and 
 Simple example:
 
 ```sh
-    docker run -p 80:80 -p 443:443 simonkowallik/httpbin:nginx
+    docker run -p 80:80 -p 443:443 rloomans/httpbin:nginx
 
-    docker run -p 80:80 -p 443:443 simonkowallik/httpbin:httpd
+    docker run -p 80:80 -p 443:443 rloomans/httpbin:httpd
 
-    docker run -p 80:80 -p 443:443 simonkowallik/httpbin:httpd-alpine
+    docker run -p 80:80 -p 443:443 rloomans/httpbin:httpd-alpine
 
-    docker run -p 80:80 -p 443:443 simonkowallik/httpbin:unit
+    docker run -p 80:80 -p 443:443 rloomans/httpbin:unit
 
-    docker run -p 80:80 simonkowallik/httpbin
+    docker run -p 80:80 rloomans/httpbin
 ```
 
 ## Advanced features
@@ -88,7 +88,7 @@ Simple example:
 ```shell
 $ docker run -it --rm -p 80:80 -p 443:443 \
   -e XHTTPBIN_X_instance_id="instance-id-1" \
-  ghcr.io/simonkowallik/httpbin:unit
+  ghcr.io/rloomans/httpbin:unit
 
 ```
 
@@ -111,7 +111,7 @@ $ curl -vsk http://localhost/get
 $ docker run -it --rm -p 80:80 -p 443:443 \
   -e HTTPBIN_Instance=1 \
   -e HTTPBIN_2ndTag="Some Value" \
-  ghcr.io/simonkowallik/httpbin:nginx
+  ghcr.io/rloomans/httpbin:nginx
 
 ```
 
@@ -143,4 +143,4 @@ $ curl -vsk http://localhost/tags
 
 Thanks to:
 
-- [@v-slenter](https://github.com/v-slenter) for [#9](https://github.com/simonkowallik/httpbin/pull/9)
+- [@v-slenter](https://github.com/v-slenter) for [#9](https://github.com/rloomans/httpbin/pull/9)

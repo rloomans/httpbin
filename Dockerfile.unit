@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM python:3.13-alpine
 
 LABEL name="httpbin"
 LABEL version="0.9.2"
@@ -8,20 +8,17 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 RUN apk update --no-cache \
+&&  apk upgrade --no-cache \
 &&  apk add --no-cache \
-          openssl \
-          python3 \
-          py3-pip \
-          unit \
-          unit-python3
+            openssl
 
 WORKDIR /httpbin
-ADD . /httpbin
+COPY . /httpbin
 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir /httpbin
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt \
+RUN pip install --no-cache-dir --break-system-packages /httpbin
 
-ADD containerfiles/alpine-unit/ /
+COPY containerfiles/alpine-unit/ /
 
 EXPOSE 80 443
 

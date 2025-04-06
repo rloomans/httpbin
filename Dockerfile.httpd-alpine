@@ -8,22 +8,23 @@ ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
 RUN apk update --no-cache \
+&&  apk upgrade --no-cache \
 &&  apk add --no-cache \
-          uwsgi \
-          openssl \
-          python3 \
-          py3-pip \
-          uwsgi-python3 \
+            openssl \
+            py3-pip \
+            python3 \
+            uwsgi \
+            uwsgi-python3 \
 &&  mkdir -p /usr/local/apache2/conf/ssl \
 &&  chmod 0700 /usr/local/apache2/conf/ssl
 
 WORKDIR /httpbin
-ADD . /httpbin
+COPY . /httpbin
 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir /httpbin
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt \
+RUN pip install --no-cache-dir --break-system-packages /httpbin
 
-ADD containerfiles/alpine-httpd/ /
+COPY containerfiles/alpine-httpd/ /
 
 EXPOSE 80 443
 
