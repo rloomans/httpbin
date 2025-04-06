@@ -30,7 +30,7 @@ from six.moves import range as xrange
 from werkzeug.datastructures import WWWAuthenticate, MultiDict
 from werkzeug.http import http_date
 from werkzeug.wrappers import Response
-from werkzeug.http import parse_authorization_header
+from werkzeug.datastructures.auth import Authorization
 from flasgger import Swagger, NO_SANITIZER
 
 from . import filters
@@ -1189,7 +1189,7 @@ def digest_auth(
     authorization = request.headers.get("Authorization")
     credentials = None
     if authorization:
-        credentials = parse_authorization_header(authorization)
+        credentials = Authorization.from_header(authorization)
 
     if (
         not authorization

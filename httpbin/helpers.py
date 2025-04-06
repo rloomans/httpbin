@@ -13,7 +13,7 @@ import re
 import time
 import os
 from hashlib import md5, sha256, sha512
-from werkzeug.http import parse_authorization_header
+from werkzeug.datastructures.auth import Authorization
 from werkzeug.datastructures import WWWAuthenticate
 
 from flask import request, make_response
@@ -384,7 +384,7 @@ def check_digest_auth(user, passwd):
     """Check user authentication using HTTP Digest auth"""
 
     if request.headers.get('Authorization'):
-        credentials = parse_authorization_header(request.headers.get('Authorization'))
+        credentials = Authorization.from_header(request.headers.get('Authorization'))
         if not credentials:
             return
         request_uri = request.script_root + request.path
@@ -494,9 +494,17 @@ def digest_challenge_response(app, qop, algorithm, stale = False):
     ]), algorithm)
     opaque = H(os.urandom(10), algorithm)
 
-    auth = WWWAuthenticate("digest")
-    auth.set_digest('me@kennethreitz.com', nonce, opaque=opaque,
-                    qop=('auth', 'auth-int') if qop is None else (qop,), algorithm=algorithm)
-    auth.stale = stale
-    response.headers['WWW-Authenticate'] = auth.to_header()
+    response.www_authenticate = [
+        WWWAuthenticate(
+            "digest",
+            {
+                "realm": "me@kennethreitz.com",
+                "nonce": nonce,
+                "opaque": opaque,
+                "qop": ("auth", "auth-int") if qop is None else (qop,),
+                "algorithm": algorithm,
+                "stale": stale,
+            },
+        )
+    ]
     return response
