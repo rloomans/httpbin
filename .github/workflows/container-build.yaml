@@ -17,8 +17,8 @@ jobs:
             file: Dockerfile.alpine
           - tag: nginx
             file: Dockerfile.nginx
-          - tag: unit
-            file: Dockerfile.unit
+          # - tag: unit
+          #   file: Dockerfile.unit
           - tag: httpd
             file: Dockerfile.httpd
           - tag: httpd-alpine
