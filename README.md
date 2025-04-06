@@ -13,14 +13,14 @@ Ironically, it's now stale too.
 ## Supported docker tags
 
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/latest?label=latest)
-<!-- ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/alpine?label=alpine)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/alpine?label=alpine)
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/nginx?label=nginx)
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/httpd?label=httpd)
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/httpd-alpine?label=httpd-alpine)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/unit?label=unit) -->
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/rloomans/httpbin/unit?label=unit)
 
-- **`:latest`** <!-- / **`:alpine`** -->: Plain httpbin with gunicorn on Debian <!-- / Alpine Linux. -->
-<!-- 
+- **`:latest`** / **`:alpine`** -->: Plain httpbin with gunicorn on Debian / Alpine Linux.
+
 - **`:nginx`** : Uses [nginx](https://github.com/nginx/nginx) and [uwsgi](https://github.com/unbit/uwsgi) with `nginx:alpine` as the base image.
 
     > Supports HTTPS and HTTP2. TLS Certificates & keys are automatically generated but can be overwritten / mapped using docker:
@@ -67,7 +67,7 @@ Ironically, it's now stale too.
     > - `/usr/local/apache2/conf/ssl/chain.pem`
     > - `/usr/local/apache2/conf/httpd.conf`
     > - `/usr/local/apache2/conf/extra/vhosts/*.conf`
-    > - `/etc/uwsgi/uwsgi.ini` -->
+    > - `/etc/uwsgi/uwsgi.ini`
 
 ## Usage
 

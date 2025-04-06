@@ -18,10 +18,10 @@ RUN apk update --no-cache \
 &&  mkdir -p /usr/local/apache2/conf/ssl \
 &&  chmod 0700 /usr/local/apache2/conf/ssl
 
-WORKDIR /httpbin
 COPY . /httpbin
+WORKDIR /httpbin
 
-RUN pip install --no-cache-dir --break-system-packages -r requirements.txt \
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
 RUN pip install --no-cache-dir --break-system-packages /httpbin
 
 COPY containerfiles/alpine-httpd/ /
