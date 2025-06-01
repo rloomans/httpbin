@@ -17,6 +17,7 @@ jobs:
         os: [ubuntu-latest]
         python-version:
           - '3.11' # legacy
+          - '3.12' # stable
           - '3.x' # latest
     steps:
       - uses: actions/checkout@v3
