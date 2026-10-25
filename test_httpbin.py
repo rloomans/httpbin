@@ -649,6 +649,14 @@ class HttpbinTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 307)
         self.assertEqual(response.headers.get("Location"), "/post")
 
+    def test_redirect_to_preserves_url(self):
+        response = self.app.get(
+            "/redirect-to?url=http%3A%2F%2Fexample.com%2Fpath%252fitem"
+        )
+        self.assertEqual(
+            response.headers.get("Location"), "http://example.com/path%2fitem"
+        )
+
     def test_redirect_absolute_param_n_higher_than_1(self):
         response = self.app.get("/redirect/5?absolute=true")
         self.assertEqual(

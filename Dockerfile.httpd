@@ -29,7 +29,7 @@ RUN export DEBIAN_FRONTEND="noninteractive" \
 COPY . /httpbin
 WORKDIR /httpbin
 
-RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
+RUN pip install --no-cache-dir --break-system-packages --ignore-installed -r requirements.txt
 RUN pip install --no-cache-dir --break-system-packages /httpbin
 
 COPY containerfiles/httpd/ /

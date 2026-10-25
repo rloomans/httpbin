@@ -680,16 +680,14 @@ def redirect_to():
     args_dict = request.args.items()
     args = CaseInsensitiveDict(args_dict)
 
-    # We need to build the response manually and convert to UTF-8 to prevent
-    # werkzeug from "fixing" the URL. This endpoint should set the Location
-    # header to the exact string supplied.
+    # Set the header directly so Werkzeug does not modify the supplied URL.
     response = app.make_response("")
     response.status_code = 302
     if "status_code" in args:
         status_code = int(args["status_code"])
         if status_code >= 300 and status_code < 400:
             response.status_code = status_code
-    response.headers["Location"] = args["url"].encode("utf-8")
+    response.headers["Location"] = args["url"]
 
     return response
 
