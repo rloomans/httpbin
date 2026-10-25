@@ -67,7 +67,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=ref,event=tag
-            type=schedule,pattern={{date 'YYYYMMDD-hhmmss' tz='Australia/Brisbane'}}
+            type=raw,value={{date 'YYYY.MM.DD' tz='Australia/Brisbane'}}-${{ github.run_number }}
             type=sha
         env:
           DOCKER_METADATA_ANNOTATIONS_LEVELS: manifest,index
