@@ -21,7 +21,7 @@ setuptools = "^84.2.1"
 
 
 [tool.poetry.group.dev.dependencies]
-rope = "^1.15.0"
+rope = "^1.15.2"
 
 [build-system]
 requires = ["poetry-core"]
